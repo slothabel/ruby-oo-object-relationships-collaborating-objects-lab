@@ -38,12 +38,11 @@ class Artist
     end
 
     def print_songs
-       Song.all.select do |i|
-        i.artist == self
+        self.songs.each {|i| puts i.name}
+    end
 
-    end
-        #binding.pry
-    end
+
+
 
 
 
