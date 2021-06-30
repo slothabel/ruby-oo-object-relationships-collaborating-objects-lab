@@ -24,21 +24,27 @@ class Artist
 
 
     def self.find_or_create_by_name(name)
-        #take the name passed in (a string), and Find the artist instance 
-        #that has that name 
-        #or create one if it doesn't exist. 
-        #Either way, the return value will be an instance of an artist with 
-        #the name attribute filled out.
-      #  binding.pry
-        if self.all.include?(name)
-            name
-        else
-            new_creation = Artist.new(name)
-            new_creation
+      found_artist = nil 
+      self.all.detect do |i|
+        if i.name == name
+            found_artist = i
+            end
         end
+            if !found_artist 
+                found_artist = Artist.new(name)
+            end
+    found_artist
+    end
+
+    def print_songs
+       Song.all.select do |i|
+        i.artist == self
+
+    end
+        #binding.pry
     end
 
 
 
-        
+
 end
